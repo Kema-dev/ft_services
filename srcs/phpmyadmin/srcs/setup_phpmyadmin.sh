@@ -1,4 +1,4 @@
-clear
+#clear
 echo -e "\nstarting nginx configuration ...\n"
 cd ..
 
@@ -30,6 +30,12 @@ cat /tmp/fastcgi-php.conf > /etc/nginx/snippets/fastcgi-php.conf
 cat /tmp/nginx.conf > /etc/nginx/nginx.conf
 ln -s /etc/nginx/sites-available/mysite /etc/nginx/sites-enabled/mysite
 echo -e "nginx configurated"
+
+echo -e "configurating phpMyAdmin ..."
+apk add php-mysqli
+mv usr/share/webapps/phpmyadmin var/www/mysite/phpmyadmin
+cat tmp/phpmyadmin.inc.php > etc/phpmyadmin/config.inc.php
+echo -e "phpMyAdmin configurated"
 
 php-fpm7
 nginx -t

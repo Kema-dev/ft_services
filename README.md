@@ -11,3 +11,5 @@ Useful nginx commands for (usage) :
 - nginx -s reload 		(restart)
 - nginx stop 			(stop)
 - nginx -t 				(configtest)
+
+netstat tunlp
