@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:latest
 
 ARG IP
 
@@ -14,7 +14,8 @@ RUN apk update && apk upgrade && apk add bash \
 										php7-curl \
 										php7-mbstring \
 										php7-json \
-										php7-session
+										php7-session \
+							&& rm -rf /var/cache/apk/*
 
 RUN wget https://wordpress.org/latest.tar.gz \
 	&& tar -xvf wget https://wordpress.org/latest.tar.gz \
