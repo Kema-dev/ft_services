@@ -1,7 +1,7 @@
 #!/bin/sh
 
-#minikube --vm-driver=docker start --extra-config=apiserver.service-node-port-range=1-35000
-minikube --vm-driver=virtualbox start --extra-config=apiserver.service-node-port-range=1-35000
+minikube --vm-driver=docker start --extra-config=apiserver.service-node-port-range=1-35000
+#minikube --vm-driver=virtualbox start --extra-config=apiserver.service-node-port-range=1-35000
 
 minikube addons enable ingress
 minikube addons enable dashboard
