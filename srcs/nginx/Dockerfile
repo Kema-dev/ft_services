@@ -12,7 +12,8 @@ RUN apk update && apk upgrade && apk add bash \
 							&& rm -rf /var/cache/apk/*
 
 RUN chown -R root:root /var/www/* \
-	&& chmod -R 755 /var/www/*
+	&& chmod -R 755 /var/www/* \
+	&& mkdir -p /run/nginx
 
 COPY srcs/nginx.conf /etc/nginx/nginx.conf
 COPY srcs/index.html /www/index.html
