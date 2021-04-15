@@ -10,5 +10,4 @@ mkdir -p /run/openrc/
 touch /run/openrc/softlevel
 openrc sysinit
 service nginx start
-sh
 #telegraf conf
