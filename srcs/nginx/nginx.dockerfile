@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:edge
 
 LABEL maintainer="jjourdan@student.42lyon.fr"
 
