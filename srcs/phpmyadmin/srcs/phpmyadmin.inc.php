@@ -31,7 +31,7 @@ foreach ($vars as $var) {
 $i = 1;
 
 /* Authentication type */
-$cfg['Servers'][$i]['auth_type'] = 'cookie';
+$cfg['Servers'][$i]['auth_type'] = 'config';
 /* Server parameters */
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = true;
@@ -41,8 +41,10 @@ $cfg['Servers'][$i]['AllowNoPassword'] = true;
  */
 $cfg['Servers'][$i]['host'] = "mysql-service";
 $cfg['Servers'][$i]['port'] = "3306";
-$cfg['Servers'][$i]['user'] = "user";
-$cfg['Servers'][$i]['password'] = "password";
+$cfg['Servers'][$i]['connect_type'] = 'tcp';
+$cfg['Servers'][$i]['user'] = "root";
+$cfg['Servers'][$i]['password'] = "";
 
 $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
+$cfg['TempDir'] = '/usr/share/webapps/phpmyadmin';

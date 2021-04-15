@@ -2,7 +2,8 @@ FROM alpine:edge
 
 LABEL maintainer="jjourdan@student.42lyon.fr"
 
-RUN apk update && apk upgrade && apk add openrc --no-cache \
+RUN apk update && apk upgrade && apk add --no-cache \
+										openrc \
 										openssl \
 										nginx \
 										php7 \
@@ -26,11 +27,12 @@ COPY srcs/wordpress-5.6-fr_FR.tar.gz .
 
 RUN tar -xvf wordpress-5.6-fr_FR.tar.gz && \
 	mkdir -p /www/wordpress && \
-	mv wordpress/* /www/wordpress/ && \
-	rm -rf /var/cache/apk/*
+	mv wordpress/* /www/wordpress/
 
 RUN chmod +x setup_wordpress.sh
 RUN chmod +x setup_nginx.sh
+
+COPY srcs/wp-config.php /www/worpress
 
 EXPOSE 80 443 5000 5050
 

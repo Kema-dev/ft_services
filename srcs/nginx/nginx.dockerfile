@@ -2,7 +2,8 @@ FROM alpine:edge
 
 LABEL maintainer="jjourdan@student.42lyon.fr"
 
-RUN apk update && apk upgrade && apk add openrc --no-cache \
+RUN apk update && apk upgrade && apk add --no-cache \
+										openrc \
 										openssl \
 										nginx
 

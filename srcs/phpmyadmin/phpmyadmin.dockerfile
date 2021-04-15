@@ -2,7 +2,8 @@ FROM alpine:edge
 
 LABEL maintainer="jjourdan@student.42lyon.fr"
 
-RUN apk update && apk upgrade && apk add openrc --no-cache \
+RUN apk update && apk upgrade && apk add --no-cache \
+										openrc \
 										openssl \
 										nginx \
 										php7 \
@@ -19,8 +20,7 @@ RUN apk update && apk upgrade && apk add openrc --no-cache \
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-all-languages.tar.gz && \
 	tar -xvf phpMyAdmin-4.9.0.1-all-languages.tar.gz && \
 	mkdir -p /www/phpmyadmin && \
-	mv phpMyAdmin-4.9.0.1-all-languages/* /www/phpmyadmin/ && \
-	rm -rf /var/cache/apk/*
+	mv phpMyAdmin-4.9.0.1-all-languages/* /www/phpmyadmin/
 
 COPY srcs/nginx.conf /etc/nginx/nginx.conf
 COPY srcs/index.html /www/index.html
@@ -31,6 +31,8 @@ COPY srcs/setup_phpmyadmin.sh .
 
 RUN chmod +x setup_phpmyadmin.sh
 RUN chmod +x setup_nginx.sh
+
+COPY srcs/phpmyadmin.inc.php /www/phpmyadmin
 
 EXPOSE 80 443 5000
 
