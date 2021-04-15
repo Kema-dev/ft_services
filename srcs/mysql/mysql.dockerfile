@@ -8,9 +8,10 @@ RUN apk update && apk upgrade && apk add --no-cache \
 										mysql-client
 
 COPY srcs/setup_mysql.sh .
-COPY srcs/mariadb-server.cnf /etc/my.cnf.d/
 
 RUN chmod +x setup_mysql.sh
+
+COPY srcs/mariadb-server.cnf /etc/my.cnf.d/
 
 EXPOSE 3306
 

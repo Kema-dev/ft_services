@@ -25,7 +25,7 @@ COPY srcs/wp-config.php /www/wp-config.php
 COPY srcs/setup_wordpress.sh .
 COPY srcs/wordpress-5.6-fr_FR.tar.gz .
 
-RUN tar -xvf wordpress-5.6-fr_FR.tar.gz && \
+RUN tar -xvf wordpress-5.6-fr_FR.tar.gz > /dev/null 2>&1 && \
 	mkdir -p /www/wordpress && \
 	mv wordpress/* /www/wordpress/
 
@@ -34,6 +34,6 @@ RUN chmod +x setup_nginx.sh
 
 COPY srcs/wp-config.php /www/worpress
 
-EXPOSE 80 443 5000 5050
+EXPOSE 5050
 
 ENTRYPOINT ["sh", "setup_wordpress.sh"]

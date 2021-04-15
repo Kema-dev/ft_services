@@ -49,7 +49,7 @@ define( 'DB_USER', 'root' );
 define( 'DB_PASSWORD', '' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'mysql-service' );
+define( 'DB_HOST', 'my-mysql' );
 
 //define('WP_HOME', 'http://THISISMYSERVIP:5050' ); // !
 //define('WP_SITEURL', 'http://THISISMYSERVIP:5050' ); // !

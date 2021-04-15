@@ -1,24 +1,24 @@
-#!/bin/sh
+#!/bin/zsh
 
-minikube --vm-driver=docker start --extra-config=apiserver.service-node-port-range=1-35000
-#minikube --vm-driver=virtualbox start --extra-config=apiserver.service-node-port-range=1-35000
+function build()
+{
+    eval $(minikube docker-env)
+    docker build -f srcs/$1/$1.dockerfile -t my-$1 ./srcs/$1/
+    kubectl apply -f srcs/$1/$1.yaml
+}
 
-minikube addons enable ingress
-minikube addons enable dashboard
+function kube()
+{
+	minikube delete
+	minikube start
+	IP_MINIKUBE=$(minikube ip)
 
-minikube dashboard &
+	build mysql
+	build nginx
+	build phpmyadmin
+	build wordpress
 
-eval $(minikube docker-env)
+	minikube dashboard
+}
 
-#IP=$(minikube ip)
-IP=$(kubectl get node -o=custom-columns='DATA:status.addresses[0].address' | sed -n 2p)
-printf "Minikube IP: ${IP}"
-
-docker build -t service_nginx ./srcs/nginx
-docker build -t service_mysql ./srcs/mysql --build-arg IP=${IP}
-docker build -t service_wordpress ./srcs/wordpress --build-arg IP=${IP}
-docker build -t service_phpmyadmin ./srcs/phpmyadmin --build-arg IP=${IP}
-
-kubectl create -f ./srcs/
-
-open http://$IP
+kube
