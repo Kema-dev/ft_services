@@ -1,5 +1,4 @@
 apiVersion: v1
-apiVersion: v1
 kind: Service
 metadata:
   name: nginx
@@ -39,11 +38,18 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-      - name: nginx
-        imagePullPolicy: Never
+      - name: my-nginx
+        imagePullPolicy: IfNotPresent
         image: my-nginx
         ports:
         - name: http
           containerPort: 80
         - name: https
           containerPort: 443
+        resources:
+          limits:
+           memory: 512Mi
+           cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "0.2"

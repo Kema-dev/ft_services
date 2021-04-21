@@ -17,3 +17,4 @@ service mariadb stop
 chown -R mysql:mysql /var/lib/mysql
 mysqld --user=root --datadir=/var/lib/mysql
 service mariadb start
+tail -f /dev/null

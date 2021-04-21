@@ -35,7 +35,7 @@ spec:
       containers:
         - image: my-mysql
           name: mysql
-          imagePullPolicy: Never
+          imagePullPolicy: IfNotPresent
           ports:
           volumeMounts:
           - name: mysql-persistent-storage

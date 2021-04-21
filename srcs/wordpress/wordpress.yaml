@@ -36,7 +36,7 @@ spec:
       containers:
       - image: my-wordpress
         name: wordpress
-        imagePullPolicy: Never
+        imagePullPolicy: IfNotPresent
         livenessProbe:
           tcpSocket:
             port: 5050
@@ -48,6 +48,13 @@ spec:
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/www/html
+        resources:
+          limits:
+           memory: 512Mi
+           cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "0.2"
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:

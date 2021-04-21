@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:3.12
 
 LABEL maintainer="jjourdan@student.42lyon.fr"
 
@@ -15,7 +15,8 @@ RUN apk update && apk upgrade && apk add --no-cache \
 										php7-curl \
 										php7-mbstring \
 										php7-json \
-										php7-session
+										php7-session \
+										wget
 
 COPY srcs/nginx.conf /etc/nginx/nginx.conf
 COPY srcs/index.html /www/index.html
@@ -23,9 +24,9 @@ COPY srcs/setup_nginx.sh .
 
 COPY srcs/wp-config.php /www/wp-config.php
 COPY srcs/setup_wordpress.sh .
-COPY srcs/wordpress-5.6-fr_FR.tar.gz .
 
-RUN tar -xvf wordpress-5.6-fr_FR.tar.gz > /dev/null 2>&1 && \
+RUN wget https://fr.wordpress.org/wordpress-5.7.1-fr_FR.tar.gz > /dev/null 2>&1 && \
+	tar -xvf wordpress-5.7.1-fr_FR.tar.gz > /dev/null 2>&1 && \
 	mkdir -p /www/wordpress && \
 	mv wordpress/* /www/wordpress/
 
