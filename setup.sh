@@ -8,7 +8,7 @@ function build()
 
 function kube()
 {
-	#minikube delete
+	minikube delete
 	minikube start
 	IP_MINIKUBE=$(minikube ip)
 
