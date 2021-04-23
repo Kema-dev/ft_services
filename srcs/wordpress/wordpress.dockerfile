@@ -16,7 +16,10 @@ RUN apk update && apk upgrade && apk add --no-cache \
 										php7-mbstring \
 										php7-json \
 										php7-session \
-										wget
+										wget \
+										curl \
+										vim \
+										sudo
 
 COPY srcs/nginx.conf /etc/nginx/nginx.conf
 COPY srcs/index.html /www/index.html

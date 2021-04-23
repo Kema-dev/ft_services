@@ -15,7 +15,10 @@ RUN apk update && apk upgrade && apk add --no-cache \
 										php7-curl \
 										php7-mbstring \
 										php7-json \
-										php7-session
+										php7-session \
+										curl \
+										vim \
+										sudo
 
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-all-languages.tar.gz && \
 	tar -xvf phpMyAdmin-4.9.0.1-all-languages.tar.gz > /dev/null 2>&1 && \
