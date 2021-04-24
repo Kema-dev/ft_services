@@ -9,6 +9,8 @@ function build()
 
 function kube()
 {
+	timer=${timer:-$SECONDS}
+
 	minikube delete
 	minikube start --driver=virtualbox
 	IP_MINIKUBE=$(minikube ip)
@@ -24,6 +26,9 @@ function kube()
 	build nginx
 	build phpmyadmin
 	build wordpress
+
+	echo "\xF0\x9F\x98\xAD \e[1m\e[94m" It took $(($SECONDS - $timer)) seconds to start minikube "\e[0m \xF0\x9F\x98\xAD"
+	unset timer
 
 	minikube dashboard
 }
