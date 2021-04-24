@@ -26,7 +26,7 @@ RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-all-
 	mv phpMyAdmin-4.9.0.1-all-languages/* /www/phpmyadmin/
 
 COPY srcs/nginx.conf /etc/nginx/nginx.conf
-COPY srcs/index.html /www/index.html
+COPY srcs/index.html /www/phpmyadmin/index.html
 COPY srcs/setup_nginx.sh .
 
 COPY srcs/phpmyadmin.inc.php /www/phpmyadmin/config.inc.php

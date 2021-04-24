@@ -11,6 +11,8 @@ function kube()
 {
 	timer=${timer:-$SECONDS}
 
+	echo "\xF0\x9F\x98\xAD \e[1m\e[94m" Let\'s start ft_services "\e[0m \xF0\x9F\x98\xAD"
+
 	minikube delete
 	minikube start --driver=virtualbox
 	IP_MINIKUBE=$(minikube ip)
@@ -20,14 +22,14 @@ function kube()
 	kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 	sed -e "s/MINIKUBE_IP/$IP_MINIKUBE/g" srcs/metallb/bare_metallb.yaml > srcs/metallb/metallb.yaml
 	kubectl apply -f srcs/metallb/metallb.yaml
-
 	kubectl apply -f srcs/mysql/storage_class.yaml
+
 	build mysql
 	build nginx
 	build phpmyadmin
 	build wordpress
 
-	echo "\xF0\x9F\x98\xAD \e[1m\e[94m" It took $(($SECONDS - $timer)) seconds to start minikube "\e[0m \xF0\x9F\x98\xAD"
+	echo "\xF0\x9F\x98\xAD \e[1m\e[94m" It took $(($SECONDS - $timer)) seconds to start the whole project "\e[0m \xF0\x9F\x98\xAD"
 	unset timer
 
 	minikube dashboard
