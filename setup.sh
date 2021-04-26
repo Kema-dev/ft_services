@@ -11,7 +11,7 @@ function kube()
 {
 	timer=${timer:-$SECONDS}
 
-	echo "\xF0\x9F\x98\xAD \e[1m\e[94m" Let\'s start ft_services "\e[0m \xF0\x9F\x98\xAD"
+	echo "\xF0\x9F\x98\xAD \e[1m\e[94m" Let\'s start ft_services "\e[0m"
 
 	minikube delete
 	minikube start --driver=virtualbox
@@ -29,7 +29,7 @@ function kube()
 	build phpmyadmin
 	build wordpress
 
-	echo "\xF0\x9F\x98\xAD \e[1m\e[94m" It took $(($SECONDS - $timer)) seconds to start the whole project "\e[0m \xF0\x9F\x98\xAD"
+	echo "\xF0\x9F\x98\xAD \e[1m\e[94m" It took $(($SECONDS - $timer)) seconds to start all services "\e[0m"
 	unset timer
 
 	minikube dashboard
