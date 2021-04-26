@@ -10,7 +10,6 @@ function build()
 function kube()
 {
 	timer=${timer:-$SECONDS}
-
 	echo "\xF0\x9F\x98\xAD \e[1m\e[94m" Let\'s start ft_services "\e[0m"
 
 	minikube delete
