@@ -1,1 +1,46 @@
-a
+apiVersion: v1
+kind: Service
+metadata:
+  name: ftps-service
+  labels:
+    run: ftps
+  annotations:
+    metallb.universe.tf/allow-shared-ip: shared
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 21
+    name: ftps
+  selector:
+    run: ftps
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ftps
+  annotations:
+    metallb.universe.tf/allow-shared-ip: shared
+spec:
+  selector:
+    matchLabels:
+      run: ftps
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: ftps
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: ftps
+        resources:
+          limits:
+           memory: 512Mi
+           cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "0.2"
+        image: my-ftps
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 21
