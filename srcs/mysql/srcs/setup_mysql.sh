@@ -14,7 +14,7 @@ echo "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';" | mysql -u root
 echo "FLUSH PRIVILEGES;" | mysql -u root
 
 service mariadb stop
-chown -R root:root /var/lib/mysql
+chown -R mysql:mysql /var/lib/mysql
 chmod 777 /var/lib/*
 service mariadb start
 pkill mysqld

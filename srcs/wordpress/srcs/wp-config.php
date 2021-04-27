@@ -46,13 +46,10 @@ define( 'DB_NAME', 'wordpress' );
 define( 'DB_USER', 'root' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', 'root' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'my-mysql' );
-
-//define('WP_HOME', 'http://THISISMYSERVIP:5050' ); // !
-//define('WP_SITEURL', 'http://THISISMYSERVIP:5050' ); // !
+define( 'DB_HOST', 'mysql' );
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );

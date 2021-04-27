@@ -43,7 +43,7 @@ $cfg['Servers'][$i]['host'] = "my-mysql";
 $cfg['Servers'][$i]['port'] = "3306";
 $cfg['Servers'][$i]['connect_type'] = 'tcp';
 $cfg['Servers'][$i]['user'] = "root";
-$cfg['Servers'][$i]['password'] = "";
+$cfg['Servers'][$i]['password'] = "root";
 
 $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
