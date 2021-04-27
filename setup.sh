@@ -26,6 +26,7 @@ function kube()
 	build nginx
 	build phpmyadmin
 	build wordpress
+	build ftps
 
 	echo "\xF0\x9F\x98\xAD \e[1m\e[94m" It took $(($SECONDS - $timer)) seconds to start all services "\e[0m"
 	unset timer

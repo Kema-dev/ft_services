@@ -10,7 +10,7 @@ RUN apk update && apk upgrade && apk add --no-cache \
 										vim \
 										sudo
 
-COPY srcs/setup_ftps.sh .
+COPY srcs/* .
 
 RUN chmod +x setup_ftps.sh
 
