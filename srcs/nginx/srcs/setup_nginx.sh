@@ -1,3 +1,4 @@
+#!/bin/sh
 mkdir -p /www
 mkdir -p /run/nginx
 adduser -D -g 'www' www

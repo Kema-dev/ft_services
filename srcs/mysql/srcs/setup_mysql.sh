@@ -1,3 +1,4 @@
+#!/bin/sh
 mkdir -p /var/lib/mysql
 chmod 777 /var/lib/*
 

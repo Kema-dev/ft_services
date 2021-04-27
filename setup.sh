@@ -1,5 +1,4 @@
 #!/bin/zsh
-
 function build()
 {
 	eval $(minikube docker-env)
